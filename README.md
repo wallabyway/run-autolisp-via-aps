@@ -328,30 +328,13 @@ You can easily modify the scripts to suit your needs:
    ```
    **Solution**: Increase the timeout value using the `--timeout` option.
 
-### Debug Mode
-
-For detailed debugging, you can modify the script to include more verbose logging:
-
-```python
-import logging
-logging.basicConfig(level=logging.DEBUG)
-```
-
-
-## Security Notes
-
-- Never commit your `.env` file to version control
-- Keep your APS credentials secure
-- Use environment variables for sensitive information
-- Regularly rotate your APS client secrets
 
 ## Support
 
 For issues related to:
-- **APS API**: Check the [APS Documentation](https://developer.autodesk.com/en/docs/)
-- **Design Automation**: Refer to [Design Automation Documentation](https://help.autodesk.com/view/OARX/2024/ENU/?guid=GUID-7B4A4CC0-5E3A-4C8A-8B4A-4CC0-5E3A-4C8A)
+- **Design Automation**: Refer to [Design Automation Documentation](https://aps.autodesk.com/developer/overview/design-automation-api)
 - **AutoLISP**: See [AutoLISP Reference](https://help.autodesk.com/view/OARX/2024/ENU/?guid=GUID-0365EB64-531D-4CC0-B740-E756CC5E5AB6)
 
 ## License
 
-This project is provided as-is for educational and development purposes. 
+MIT License - This project is provided as-is for educational and development purposes. 
