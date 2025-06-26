@@ -1,0 +1,11 @@
+;; AutoCAD .scr script to execute any LISP script
+;; This script loads and executes a LISP file, then quits AutoCAD
+
+;; Load and execute the LISP script (script name will be replaced by template)
+(command "._SCRIPT" "{lisp_file}")
+
+;; Wait a moment for processing to complete
+(command "._DELAY" "1000")
+
+;; Quit AutoCAD (save changes)
+(command "._QUIT" "Y") 

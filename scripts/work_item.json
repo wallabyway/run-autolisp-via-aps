@@ -1,0 +1,32 @@
+{
+  "activityId": "{activity_id}",
+  "arguments": {
+    "InputArguments": [
+      {
+        "resource": "urn:adsk.objects:os.object:{bucket_name}:{input_file_key}",
+        "name": "HostDwg",
+        "storageProvider": "Generic"
+      }
+    ],
+    "OutputArguments": [
+      {
+        "name": "Result",
+        "storageProvider": "Generic",
+        "httpVerb": "PUT",
+        "resource": "urn:adsk.objects:os.object:{bucket_name}:output/{output_file}"
+      }
+    ],
+    "ScriptBundles": [
+      {
+        "resource": "urn:adsk.objects:os.object:{bucket_name}:scripts/{lisp_file}",
+        "name": "{lisp_file}",
+        "storageProvider": "Generic"
+      },
+      {
+        "resource": "urn:adsk.objects:os.object:{bucket_name}:scripts/execute_script.scr",
+        "name": "execute_script.scr",
+        "storageProvider": "Generic"
+      }
+    ]
+  }
+} 
