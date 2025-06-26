@@ -4,12 +4,12 @@ A Python CLI tool for processing AutoCAD DWG files using Autodesk Platform Servi
 
 ## About This Sample Repository
 
-This sample repository was generated using the new Autodesk documentation files to test and demonstrate APS Design Automation capabilities:
+This sample repository was generated using the new LLMS.txt files and Cursor.  They demonstrate "Vibe coding" a combo of APS Design Automation and Autocad AutoLisp into a python CLI tool:
 
 - **AutoCAD LISP Documentation**: Generated using the new AutoCAD LISP LLMs documentation file (`aps.autodesk.com/llms-autolisp.txt`)
 - **APS Design Automation**: Generated using the new APS full documentation file (`aps.autodesk.com/llms-full.txt`)
 
-This repository serves as a test implementation to validate the features and capabilities described in these new documentation files, providing a working example of how to integrate AutoCAD LISP scripts with APS Design Automation services.
+This repository serves as a test to see how smart Cursor is with detailed knowledge of AutoCAD Lisp and APS Design Automation for Autocad.
 
 ### File Structure
 
@@ -28,7 +28,7 @@ run-autolisp-via-aps
 
 ## Vibe Coded - Prompt
 
-This tool was created based on the following prompt:
+This tool was created based on the following prompt with both `llms-full.txt` and `llms-autolisp.txt` :
 
 > "Help me write a python cli tool, that sends script to APS Design Automation for Autocad without any C# or compile step like a DLL since I'm running on a mac.
 > 
