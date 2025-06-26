@@ -11,9 +11,24 @@ This sample repository was generated using the new Autodesk documentation files 
 
 This repository serves as a test implementation to validate the features and capabilities described in these new documentation files, providing a working example of how to integrate AutoCAD LISP scripts with APS Design Automation services.
 
-## Project Origin
+### File Structure
 
-This tool was created based on the following requirements:
+```
+run-autolisp-via-aps
+├── aps_design_automation.py    # Main CLI tool
+├── requirements.txt            # Python dependencies
+├── sample.env                  # Your environment variables (rename to .env)
+├── README.md                   # This file
+└── scripts/                    # Script files directory
+    ├── modify_title.lsp        # AutoLISP script for title block modification
+    ├── extract_data.lsp        # AutoLISP script for data extraction
+    ├── execute_script.scr      # Single .scr file for all LISP scripts
+    └── work_item.json          # Flexible work item template
+```
+
+## Vibe Coded - Prompt
+
+This tool was created based on the following prompt:
 
 > "Help me write a python cli tool, that sends script to APS Design Automation for Autocad without any C# or compile step like a DLL since I'm running on a mac.
 > 
@@ -42,7 +57,7 @@ This tool was created based on the following requirements:
 
 1. **APS Account**: You need an Autodesk Platform Services (APS) account
 2. **APS Application**: Create an application in the APS Developer Portal
-3. **APS Bucket**: Create a bucket for file storage
+3. **APS Bucket**: This tool will create a temporary OSS bucket for file storage
 4. **Python 3.7+**: Ensure Python is installed on your system
 
 ## Setup
@@ -53,45 +68,40 @@ This tool was created based on the following requirements:
 pip install -r requirements.txt
 ```
 
-### 2. Configure Environment Variables
-
-Copy the example environment file and configure your APS credentials:
-
-```bash
-cp env.example .env
-```
-
-Edit the `.env` file with your APS credentials:
-
-```env
-# APS Design Automation Configuration
-APS_CLIENT_ID=your_aps_client_id_here
-APS_CLIENT_SECRET=your_aps_client_secret_here
-APS_BUCKET_NAME=your_bucket_name_here
-
-# Optional: APS Region (defaults to us-east-1)
-APS_REGION=us-east-1
-```
-
-### 3. Get APS Credentials
+### 2. Get APS Credentials
 
 1. Go to [APS Developer Portal](https://developer.autodesk.com/)
 2. Create a new application
 3. Note your Client ID and Client Secret
 4. Create a bucket for file storage
-5. Update your `.env` file with these values
+5. Update your `sample.env` file with these values
 
-### 4. Test Your Setup
+### 3. Configure Environment Variables
 
-Before running the main tool, test your APS configuration:
+Update the sample.env file with your APS credentials and rename it:
+
+```env
+APS_CLIENT_ID=your_aps_client_id_here
+APS_CLIENT_SECRET=your_aps_client_secret_here
+APS_BUCKET_NAME=your_bucket_name_here
+```
 
 ```bash
-python test_aps.py
+mv sample.env .env
 ```
+
+### Sample DWG Files for Testing
+
+Before using the LISP scripts, you'll need sample DWG files to test with. You can find sample files at:
+
+- **Sample Civil DWG**: [Autodesk Support Article](https://www.autodesk.com/support/technical/article/caas/tsarticles/ts/6XGQklp3ZcBFqljLPjrnQ9.html)
+- **Sample DWG with Title Block**: [Autodesk Support Article](https://www.autodesk.com/support/technical/article/caas/tsarticles/ts/6XGQklp3ZcBFqljLPjrnQ9.html)
+
+These sample files are perfect for testing both the title block modification and data extraction scripts.
 
 ## Usage
 
-### Basic Usage (Title Block Modification)
+### Basic Usage (default lisp script = "Title Block Modification")
 
 ```bash
 python aps_design_automation.py path/to/your/file.dwg
@@ -100,7 +110,7 @@ python aps_design_automation.py path/to/your/file.dwg
 ### Data Extraction
 
 ```bash
-python aps_design_automation.py path/to/your/file.dwg \
+python aps_design_automation.py path/to/your/civil-file.dwg \
   --lisp extract_data.lsp \
   --output extracted_data.csv \
   --activity AutoCAD.ExtractData+prod
@@ -143,14 +153,6 @@ Download URL: https://developer.api.autodesk.com/...
 
 The tool includes two pre-built AutoLISP scripts for common workflows:
 
-### Sample DWG Files for Testing
-
-Before using the LISP scripts, you'll need sample DWG files to test with. You can find sample files at:
-
-- **Sample Civil DWG**: [Autodesk Support Article](https://www.autodesk.com/support/technical/article/caas/tsarticles/ts/6XGQklp3ZcBFqljLPjrnQ9.html)
-- **Sample DWG with Title Block**: [Autodesk Support Article](https://www.autodesk.com/support/technical/article/caas/tsarticles/ts/6XGQklp3ZcBFqljLPjrnQ9.html)
-
-These sample files are perfect for testing both the title block modification and data extraction scripts.
 
 ### 1. `scripts/modify_title.lsp` - Title Block Modification
 
@@ -335,22 +337,6 @@ import logging
 logging.basicConfig(level=logging.DEBUG)
 ```
 
-## File Structure
-
-```
-acad-vibe1/
-├── aps_design_automation.py    # Main CLI tool
-├── test_aps.py                 # APS setup validation script
-├── requirements.txt            # Python dependencies
-├── env.example                 # Environment variables template
-├── README.md                   # This file
-├── .env                        # Your environment variables (create this)
-└── scripts/                    # Script files directory
-    ├── modify_title.lsp        # AutoLISP script for title block modification
-    ├── extract_data.lsp        # AutoLISP script for data extraction
-    ├── execute_script.scr      # Single .scr file for all LISP scripts
-    └── work_item.json          # Flexible work item template
-```
 
 ## Security Notes
 
